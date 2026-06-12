@@ -1,0 +1,25 @@
+{
+  "skill_name": "server-ops-hardening",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这台 Ubuntu Docker 服务器今天早上突然无法 SSH，后来自己恢复了。请只读检查原因，给出证据，不要改配置。",
+      "expected_output": "Runs or proposes read-only boot/journal/resource/Docker triage, separates confirmed/probable causes, does not modify system, and reports evidence with timestamps."
+    },
+    {
+      "id": 2,
+      "prompt": "帮我把这台 8G 内存的服务器做全面运行优化和安全加固方案，跑着 nginx、Docker、Redis 和一个 Playwright 抓取服务。先给方案和风险，暂时不要执行。",
+      "expected_output": "Produces machine-specific audit plan covering resource limits, swap, Docker, SSH, firewall, fail2ban, updates, secrets, backups, monitoring, priorities, rollback and verification."
+    },
+    {
+      "id": 3,
+      "prompt": "服务器上有几个容器没有内存限制，经常把机器拖死。请修复并验证，但数据库容器不能随便重启。",
+      "expected_output": "Inspects compose/runtime state, distinguishes stateless from stateful containers, proposes safe memory/PID limits, avoids database restart unless approved, applies only authorized changes, and verifies with docker inspect/stats/health checks."
+    },
+    {
+      "id": 4,
+      "prompt": "我想把这套服务器检查和加固流程复制到 20 台机器，要求自动识别每台机器配置并输出不同建议。",
+      "expected_output": "Explains reusable audit script/process, per-machine classification, safe defaults, inventory output, risk matrix, and warns that concrete limits and security changes must be adapted per host."
+    }
+  ]
+}
