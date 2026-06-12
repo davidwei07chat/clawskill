@@ -1,0 +1,20 @@
+{
+  "skill_name": "fleet-server-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我有 20 台 Ubuntu 服务器，想批量检查每台机器配置、Docker、SSH 安全、内存和磁盘风险。先只读收集并输出总表，不要改任何机器。",
+      "expected_output": "Asks for or uses an inventory, runs/mentions the fleet audit script in read-only mode, preserves per-host evidence, and produces a matrix with unreachable hosts and P0/P1 risks."
+    },
+    {
+      "id": 2,
+      "prompt": "这里有三台机器：prod-web=root@10.0.0.10, crawler=ubuntu@10.0.0.11, db=root@10.0.0.12。帮我设计按角色分批加固的 rollout 计划，数据库不能随便重启。",
+      "expected_output": "Classifies web/crawler/db roles, proposes canary and batch rollout, gates database changes behind backup/restore evidence and approval, and avoids all-at-once changes."
+    },
+    {
+      "id": 3,
+      "prompt": "多台服务器都遇到过内存打满导致 SSH 断开。请找共性，给出每台机器不同的 Docker 内存限制建议和安全补强建议。",
+      "expected_output": "Looks for fleet-wide memory pressure patterns, recommends per-role/per-machine limits instead of one-size-fits-all values, includes SSH/fail2ban/firewall/logging/monitoring guidance."
+    }
+  ]
+}

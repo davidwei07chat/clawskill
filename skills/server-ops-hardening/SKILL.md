@@ -7,9 +7,12 @@ description: Use this skill whenever the user asks to inspect, optimize, stabili
 
 Use this skill to turn a vague server concern into a careful, evidence-backed operations and security workflow. The goal is not to apply a generic checklist. The goal is to identify what this machine is, what it runs, what can break, what is exposed, and which changes reduce risk without surprising the user.
 
+For multi-host inventory, comparison, risk scoring, and staged rollout planning, use `fleet-server-audit` first. Return to this skill for any single host that needs deeper diagnosis, config edits, or post-change verification.
+
 ## Operating principles
 
 - Start read-only. Gather facts before changing anything.
+- For fleets, avoid one-size-fits-all tuning. Use `fleet-server-audit` to classify hosts, then apply this skill host-by-host.
 - Separate cause, risk, and remediation. A server can be slow because of SSH transport, IDE/bootstrap, CPU, memory pressure, disk I/O, DNS, network filtering, or application startup.
 - Treat security hardening as change management. SSH, firewall, Docker networking, automatic updates, and service restarts can lock the user out or break production.
 - Prefer least-disruptive fixes first: container limits, service health checks, log retention, swap tuning, rate limits, and monitoring before broad platform rewrites.
